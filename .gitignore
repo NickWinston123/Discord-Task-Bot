@@ -1,0 +1,33 @@
+# Environments
+.env
+.venv/
+env/
+secrets.env
+venv/
+
+# Python / Byte-compiled / Cache
+*.py[cod]
+*$py.class
+__pycache__/
+.pytest_cache/
+
+# Data and Configurations
+config/credentials.json
+config/runtime_state.json
+config/task_log.json
+config/token.json
+credentials.json
+token.json
+
+# Logs
+*.log
+logs/
+
+# Scripts (Ignore your personal scripts, users will use the .example)
+launch*.bat
+start.sh
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/

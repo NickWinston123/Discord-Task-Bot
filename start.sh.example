@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+CONTAINER_NAME="discord-taskbot"
+IMAGE_NAME="discord-taskbot-image"
+
+cd "$(dirname "$0")"
+
+echo "🛠 Building image..."
+docker build -t "$IMAGE_NAME" .
+
+echo "🛑 Stopping old container (if any)..."
+docker stop "$CONTAINER_NAME" 2>/dev/null || true
+docker rm "$CONTAINER_NAME" 2>/dev/null || true
+
+echo "🚀 Starting new container..."
+docker run -d \
+  --name "$CONTAINER_NAME" \
+  --restart unless-stopped \
+  --env-file .env \
+  -v "$(pwd)/config:/app/config" \
+  "$IMAGE_NAME"
